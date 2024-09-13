@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image for Prediction</title>
+</head>
+
+<body>
+    <h1>Upload Image for Hate Speech Detection</h1>
+    <form id="uploadForm" action="/predict" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Result:</h2>
+    <div id="result"></div>
+
+    <h2>Uploaded Image:</h2>
+    <div id="uploadedImage"></div>
+
+    <script>
+        const form = document.getElementById('uploadForm');
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch('/predict', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                document.getElementById('result').innerHTML = `<strong>${result.result}</strong><br>Extracted Text: ${result.extracted_text}`;
+                
+                // Display the uploaded image
+                const imageUrl = `/uploads/${formData.get('file').name}`;
+                document.getElementById('uploadedImage').innerHTML = `<img src="${imageUrl}" alt="Uploaded Image" style="max-width:500px;">`;
+            } else {
+                document.getElementById('result').innerHTML = 'Error in prediction!';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
