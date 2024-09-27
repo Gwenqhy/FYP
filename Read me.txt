@@ -1,15 +1,15 @@
-Memo: Explanation of Technical Difficulties
-
-Due to a malware issue, my laptop's CPU was maxed out, causing frequent freezing and preventing me from recording, processing, and uploading files. I have identified and resolved the issue today.
-
-Additionally, there was a change in the UOL enquiry portal, which I was unable to access. Prior to the deadline, I sent an email to UOL regarding my technical difficulties but received an automated response informing me that the email address had been discontinued.
-
-I respectfully ask that these circumstances be taken into consideration during the review of my submission.
-
-Thank you for your understanding.
----------------------------------------------------------------------------------------
+Load Web folder to VS Code.
 Run app.py in the Web folder
 
+in VScode terminal, run:
+
+1. pip install flask tensorflow transformers pyngrok pillow pytesseract, pip install contractions
+
+2. python app.py
+
+3. go to browser: http://127.0.0.1:5000/
+
+Set up
 download Ngrok from official page and run authtoken to the default ngrok.yml 
 download Tesseract from GitHub
 May have to turn off firewall to load browser successfully
@@ -23,11 +23,4 @@ set up postman extension on VScode
 - Click on send to receive results on prediction.
 
 
-in VScode terminal, run:
 
-1. pip install flask tensorflow transformers pyngrok pillow pytesseract, pip install contractions
-
-
-3. python app.py
-
-go to browser: http://127.0.0.1:5000/
